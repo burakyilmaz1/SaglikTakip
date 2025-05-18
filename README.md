@@ -1,80 +1,89 @@
-# 🎓 Online Eğitim Platformu
+# Sağlık Takip Uygulaması
 
-Bu proje, **C#** kullanılarak geliştirilen bir **Online Eğitim Platformu** uygulamasıdır. Öğrenci ve öğretmen rolleri için ayrı paneller içerir ve kullanıcıların kurslara erişmesini, kurs detaylarını görüntülemesini ve içeriklerle etkileşim kurmasını sağlar.
+Bu uygulama, kullanıcıların sağlık verilerini (kilo, nabız vb.) kaydetmek, egzersiz planları oluşturmak ve bu bilgileri raporlamak amacıyla geliştirilmiştir.
 
----
+## 🔧 Kurulum Talimatları
 
-## 🚀 Kurulum ve Başlatma
+1. **Veritabanını Yükleme**  
+   Proje klasörü içerisindeki `SaglikTakip.bak` dosyasını SQL Server sunucunuza **restore** edin.
 
-Projeyi çalıştırmak için aşağıdaki adımları takip edin:
+2. **Projenin Yapılandırılması**  
+   - Visual Studio ile projeyi açın.  
+   - `DatabaseHelper.cs` dosyasını kendi SQL Server bağlantı bilgilerinizle güncelleyin.  
+   - Yapılandırma tamamlandıktan sonra projeyi çalıştırabilirsiniz.
 
-1. **Veritabanını Restore Edin:**
-   - Proje klasöründe bulunan `OnlineEgitim.bak` dosyasını kendi **SQL Server** ortamınıza restore edin.
+## 🧭 Ana Menü Özellikleri
 
-2. **Sunucu Ayarlarını Güncelleyin:**
-   - `Databasehelper.cs` dosyasını açın.
-   - `SqlConnection` bağlantı cümlesindeki **sunucu adını** kendi bilgisayarınıza uygun şekilde güncelleyin.
+- **Kullanıcı Ekle**: Yeni kullanıcı bilgisi ekleme ekranı.
+- **Sağlık Kaydı Ekle**: Kilo, nabız gibi sağlık verilerini kullanıcıya özel olarak ekleme ekranı.
+- **Egzersiz Planla**: Kullanıcılara özel egzersiz programı oluşturma alanı.
+- **Rapor Görüntüle**: Kullanıcının geçmiş sağlık ve egzersiz verilerini görüntüleme ekranı.
+- **Çıkış**: Uygulamadan güvenli çıkış yapılmasını sağlar.
 
-3. **Visual Studio'da Projeyi Başlatın:**
-   - Çözümü Visual Studio ile açın ve projeyi çalıştırın.
+## 👤 1. Kullanıcı Ekleme
 
----
+Yeni bir kullanıcı eklemek için:
 
-## 👨‍🎓 Öğrenci Özellikleri
+- **Ad**: Kullanıcının adını girin (Örn: `Ayberk`)
+- **Yaş**: Kullanıcının yaşını girin (Örn: `19`)
+- **Cinsiyet**: Kadın / Erkek / Diğer seçeneklerinden birini seçin.
+- **Kaydet** butonuna tıklayın.
 
-- Yeni hesap oluşturma
-- Sisteme giriş yapma
-- Aktif kursları görüntüleme
-- Kurslara katılma
-- Kurs detaylarını görme
-- Katıldığı kursları listeleme
+Kullanıcı başarıyla veritabanına kaydedilecektir.
 
-### 📸 Ekran Görüntüleri (Öğrenci)
+## 📋 2. Sağlık Kaydı Ekleme
 
-- **Giriş Ekranı:**  
-  ![Öğrenci Giriş](screenshots/ogrenci_giris.png)
+Kullanıcının sağlık bilgilerini kaydetmek için:
 
-- **Öğrenci Paneli:**  
-  ![Öğrenci Panel](screenshots/ogrenci_panel.png)
+- **Kullanıcı Seç**: Kayıt eklenecek kullanıcıyı seçin.
+- **Tarih**: Takip tarihini belirtin.
+- **Kilo**: Kilo bilgisini girin.
+- **Nabız**: Nabız değerini girin.
+- **Notlar**: Ek açıklamalar (isteğe bağlı).
+- **Kaydet** butonuna basın.
 
-- **Kurs Detayları:**  
-  ![Kurs Detayları](screenshots/kurs_detaylari.png)
+Kayıt başarıyla eklenir ve kullanıcı geçmişine kaydedilir.
 
-- **Kurslarım:**  
-  ![Kurslarım](screenshots/kurslarim.png)
+## 🏃 3. Egzersiz Planlama
 
----
+Kullanıcıya özel egzersiz planı oluşturmak için:
 
-## 👨‍🏫 Öğretmen Özellikleri
+- **Kullanıcı Seç**: Plan oluşturulacak kullanıcıyı seçin.
+- **Egzersiz Adı**: Örn: `Koşu`
+- **Süre (dk)**: Egzersiz süresi girin.
+- **Tekrar**: Kaç tekrar yapılacağını belirtin.
+- **Kaydet** butonuna tıklayın.
 
-- Giriş yapma
-- Yeni kurs ekleme
-- Kurslara not ekleme
-- Kursuna katılan öğrencileri listeleme
+Veriler, kullanıcıya özel egzersiz planı olarak saklanacaktır.
 
-### 📸 Ekran Görüntüleri (Öğretmen)
+## 📊 4. Rapor Görüntüleme
 
-- **Giriş Ekranı:**  
-  ![Öğretmen Giriş](screenshots/ogretmen_giris.png)
+Kullanıcının geçmiş sağlık ve egzersiz kayıtlarını incelemek için:
 
-- **Öğretmen Paneli:**  
-  ![Öğretmen Paneli](screenshots/ogretmen_panel.png)
+- **Kullanıcı Seç**: Raporunu görüntülemek istediğiniz kullanıcıyı seçin.
 
----
+Rapor 2 bölümde sunulur:
 
-## 🛠️ Kullanılan Teknolojiler
+- **Sağlık Kayıtları**: Kilo, nabız gibi sağlık verileri listelenir.
+- **Egzersizler**: Kullanıcının uyguladığı egzersiz planları gösterilir.
 
-- C# (.NET Framework)
-- Windows Forms
-- SQL Server (Veritabanı)
-- ADO.NET (Veri erişimi)
+## 🖼️ Ekran Görüntüleri
 
----
+### Ana Sayfa
+![Ana Sayfa](screenshots/anasayfa.png)
 
-## 📬 İletişim
+### Kullanıcı (Hasta) Ekle
+![Hasta Ekle](screenshots/hasta_ekle.png)
 
-Herhangi bir soru veya katkı için iletişime geçmekten çekinmeyin!
+### Sağlık Bilgileri Ekle
+![Hasta Bilgileri](screenshots/hasta_bilgileri.png)
 
----
+### Egzersiz Ekle
+![Spor Ekle](screenshots/spor_ekle.png)
 
-**Not:** Bu proje bir eğitim amaçlı çalışmadır ve daha ileri düzey özelliklerle geliştirilmeye açıktır.
+### Rapor Görüntüle
+![Rapor](screenshots/rapor.png)
+
+## 🗂️ Proje Hakkında
+
+Bu proje, bireylerin sağlık takibini kolaylaştırmak ve düzenli olarak egzersiz yapmalarını desteklemek amacıyla hazırlanmıştır. Eğitim, staj veya bireysel projelerinizde kullanabilirsiniz.
